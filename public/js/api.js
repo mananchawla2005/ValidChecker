@@ -68,13 +68,19 @@ const eligibleOrNot = (data) => {
   }
 };
 const modalDetails = (data) => {
-  const result = document.getElementById("modal-result");
+  const result = document.querySelector("#modal-result > span");
   if (data.status == 200 && data.valid) {
-    result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">${eligibleOrNot(
-      data
-    )} ${openOrNot(data)}</span> for Hacktoberfest 2021`;
+    if(data.isEligible){
+      result.innerHTML = `${eligibleOrNot(data)} ${openOrNot(data)}`;
+      result.style.color = "var(--theme-primary-bg-light)";
+    } else {
+      result.innerHTML = `${eligibleOrNot(data)} ${openOrNot(data)}`;
+      result.style.color = "#ff0000";
+    }
+
   } else if (data.status == 15) {
-    result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">banned</span> for Hacktoberfest 2021`;
+    result.innerHTML = `banned`;
+    result.style.color = "#ff0000";
   }
 };
 document.querySelector(".button-close").addEventListener("click", toggleModal);

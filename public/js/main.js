@@ -1,13 +1,23 @@
-const themeTogglerButton = document.querySelector(".theme-toggler-button");
+const themeTogglerButton = document.querySelectorAll(".theme-toggler-button");
 const themeTogglerIcon = document.querySelector(".theme-toggler-icon");
-const theme = localStorage.getItem("theme");
-if (theme) {
-  if (theme === "dark") {
-    toggleClasses();
-  }
-}
-themeTogglerButton.addEventListener("click", () => {
-  toggleClasses();
+
+// if (theme) {
+//   if (theme === "dark") {
+//     toggleClasses();
+//   }
+// }
+themeTogglerButton.forEach(btn => {
+  btn.addEventListener("click", () => {
+    theme = localStorage.getItem("theme");
+    console.log(`THEME START: ${theme}`)
+    if (theme) {
+      if (theme === "dark") {
+        toggleClasses();
+      } else {
+        console.log(`Theme should equal to light`)
+      }
+    }
+  });
 });
 
 function saveToLocalStorage(value) {
@@ -85,59 +95,101 @@ function toggleClasses() {
   const navBarTogler = document.querySelector(".navbar-toggler");
   const navLinks = document.querySelectorAll(".custom-link");
   const navbar = document.querySelector(".custom-nav");
-  const modalContent = document.querySelector(".modal-content");
+  const modalContent = document.querySelectorAll(".modal-content");
   const modalLogo = document.querySelector(".model-logo");
-  const modalCloseButton = document.querySelector(".button-close");
+  const modalCloseButton = document.querySelectorAll(".button-close");
+  const modalCloseButton2 = document.querySelectorAll(".btn-close");
   const copyRight = document.querySelector(".copyright");
+  const reposContent = document.querySelector(".repo-content");
+  const cards = document.querySelectorAll(".card");
+  const modalTitle = document.querySelectorAll(".modal-title");
+
   copyRight.classList.toggle("copyright-light")
   copyRight.classList.toggle("copyright-dark")
-  modalContent.classList.toggle("bg-light");
-  modalContent.classList.toggle("bg-dark");
-  modalCloseButton.classList.toggle("theme-light-orange");
-  modalCloseButton.classList.toggle("theme-dark-green");
+  modalContent.forEach(content => {
+    content.classList.toggle("bg-light");
+    content.classList.toggle("bg-dark");
+  })
+  modalCloseButton.forEach(closeBtn => {
+    closeBtn.classList.toggle("theme-primary-black");
+    closeBtn.classList.toggle("theme-primary-bg-dark");
+  })
+  modalCloseButton2.forEach(closeBtn => {
+    closeBtn.classList.toggle("btn-close-white")
+  })
   body.classList.toggle("bg-light");
   body.classList.toggle("bg-dark");
-  searchButton.classList.toggle("theme-light-orange");
-  searchButton.classList.toggle("theme-dark-green");
   navLinks.forEach((navLink) => {
-    navLink.classList.toggle("theme-light-orange-link");
-    navLink.classList.toggle("theme-dark-green-link");
+    navLink.classList.toggle("theme-primary-black-link");
+    navLink.classList.toggle("theme-primary-bg-dark-link");
   });
-  themeTogglerButton.classList.toggle("theme-light-green");
-  themeTogglerButton.classList.toggle("theme-dark-orange");
-  navBarTogler.classList.toggle('nav-light')
-  navBarTogler.classList.toggle('nav-dark')
+  themeTogglerButton.forEach(btn => {
+    btn.classList.toggle("theme-primary-bg-light");
+    btn.classList.toggle("theme-dark-orange");
+  })
+  navBarTogler.classList.toggle("nav-light")
+  navBarTogler.classList.toggle("nav-dark")
   navbar.classList.toggle("bg-light");
   navbar.classList.toggle("bg-dark");
-  let currentTheme = heroLogo.dataset.theme;
-  let currentMainTheme=mainLogo.dataset.theme;
-  if(currentMainTheme==="light"){
-    mainLogo.dataset.theme="dark"
-    mainLogo.innerHTML=darkMainLogo;
-  }else{
-    mainLogo.dataset.theme="light"
-    mainLogo.innerHTML=lightMainLogo;
+
+  if (searchButton !== null) {
+    searchButton.classList.toggle("theme-primary-black");
+    searchButton.classList.toggle("theme-primary-bg-dark");
   }
-  if (currentTheme === "light") {
-    heroLogo.dataset.theme = "dark";
-    heroLogo.src = "logoDark.svg";
-  } else {
-    heroLogo.dataset.theme = "light";
-    heroLogo.src = "logoLight.svg";
+
+  if (reposContent != null) {
+    reposContent.classList.toggle("bg-dark");
+    reposContent.classList.toggle("bg-light");
   }
-  if(modalLogo.dataset.theme=="light"){
-    modalLogo.dataset.theme = "dark";
-    modalLogo.src="svg/modalLogo-dark.svg"
-  }else{
-    modalLogo.dataset.theme = "light";
-    modalLogo.src="svg/modalLogo-light.svg"
+
+  modalTitle.forEach(title => {
+    title.classList.toggle("theme-primary-black-link");
+    title.classList.toggle("theme-primary-bg-dark-link");
+  })
+
+  cards.forEach((card) => {
+    card.classList.toggle("bg-light")
+  })
+
+  let currentMainTheme = mainLogo.dataset.theme;
+  let currentTheme;
+
+  if (currentMainTheme !== null) {
+    if (currentMainTheme === "light") {
+      mainLogo.dataset.theme = "dark"
+      mainLogo.innerHTML = darkMainLogo;
+    } else {
+      mainLogo.dataset.theme = "light"
+      mainLogo.innerHTML = lightMainLogo;
+    }
   }
-  currentTheme = heroLogo.dataset.theme;
-  saveToLocalStorage(currentTheme);
+
+  if (heroLogo !== null) {
+    currentTheme = heroLogo.dataset.theme;
+
+    if (currentTheme === "light") {
+      heroLogo.dataset.theme = "dark";
+      heroLogo.src = "horizontal_beige.svg";
+    } else {
+      heroLogo.dataset.theme = "light";
+      heroLogo.src = "horizontal_dark_green.svg";
+    }
+  }
+
+  if (modalLogo !== null) {
+    if (modalLogo.dataset.theme == "light") {
+      modalLogo.dataset.theme = "dark";
+      modalLogo.src = "svg/vertical_dark_green.svg"
+    } else {
+      modalLogo.dataset.theme = "light";
+      modalLogo.src = "svg/vertical_dark_green.svg"
+    }
+  }
+
 }
 
 // Preloader
 setTimeout(() => {
   document.querySelector(".preloader").classList.toggle("d-block");
   document.querySelector(".preloader").classList.toggle("d-none");
-}, 10);
+}, 1000);

@@ -1,35 +1,64 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400&display=swap");
-* {
-  font-family: "JetBrains Mono", monospace;
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+:root {
+  --theme-primary-bg-light: #50da4c;
+  --theme-primary-bg-dark: #183717;
+  --theme-primary-black: #1c1c1c;
+
+  --theme-secondary-light: #fefdf8;
+  --theme-secondary-beige: #f3f0e0;
+
+  /* --theme-primary-bg-light: #677662;
+  --theme-primary-bg-dark: #183717;
+  --theme-primary-black: #212529;
+  --theme-copyright: #d2d1c4; */
+
+  /* --theme-dark-orange: #b53a26;
+  --theme-primary-bg-dark: #505c4c; */
 }
-body {
+
+* {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+html, body {
   overflow: hidden;
-  min-height: 100vh;
+  height: 100%;
+  max-height: 100vh;
   background-repeat: repeat-x;
   box-sizing: border-box;
 }
-/* Modal */
+
+#banner {
+  height: 80vh !important;
+}
+
 .custom-modal {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
 .hacktoberfest-logo {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+
 .repo-input {
   width: 90%;
   margin: auto;
 }
+
 .custom-search-input {
   border: none;
   height: 69px;
   outline: none !important;
 }
+
 .last-searched {
   display: none;
 }
+
 .custom-search-button {
   width: 100px;
   height: 42px;
@@ -38,9 +67,11 @@ body {
   color: white;
   background-color: rgb(20, 18, 18);
 }
+
 .custom-search-button:hover {
   background-color: #4f4646;
 }
+
 .custom-link {
   -webkit-transition: 0.1s ease-out;
   -o-transition: 0.1s ease-out;
@@ -48,20 +79,23 @@ body {
   position: relative;
   color: rgb(229, 225, 230);
 }
+
 .list-group-item > p {
   overflow: auto;
   white-space: nowrap;
 }
+
 .remove-button {
   -webkit-box-flex: 0;
   -ms-flex: none;
   flex: none;
 }
+
 .list-group-item > p::-webkit-scrollbar {
   display: none;
 }
 
-.theme-dark-green-link.custom-link:hover {
+.theme-primary-bg-dark-link.custom-link:hover {
   opacity: 1;
   text-shadow: rgb(255 215 77 / 60%) -1px -1px 6px,
     rgb(124 127 255 / 60%) 1px 1px 6px;
@@ -71,11 +105,19 @@ body {
   font-size: 0.7rem;
   z-index: 0;
 }
+
 @media screen and (max-width: 400px) {
   .custom-search-button {
     width: 30%;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .repo-cards {
+    flex-direction: column;
+  }
+}
+
 @media screen and (min-width: 980px) {
   .hacktoberfest-logo {
     width: 50% !important;
@@ -84,21 +126,25 @@ body {
     width: 70% !important;
   }
 }
+
 .container-fluid {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .logo {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .logo .navbar-brand .d {
   height: 60px;
   width: 60px;
   position: relative;
 }
+
 .navbar-brand .d svg {
   position: absolute;
   height: 100%;
@@ -106,6 +152,7 @@ body {
   filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
     drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
 }
+
 .navbar-brand .d .h {
   width: 50%;
   top: 50%;
@@ -114,46 +161,196 @@ body {
   filter: drop-shadow(rgba(226, 192, 66, 0.6) -1px -1px 2px)
     drop-shadow(rgba(107, 109, 221, 0.664) 1px 1px 2px);
 }
-.text-hactober{
+
+.text-hactober {
   height: 230px;
 }
-.text-hactober img{
+
+.text-hactober img {
   height: 100%;
-  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
-    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+  /* filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px); */
 }
-.modal-body{
+
+/* Card Styles */
+
+.repo-cards .card {
+  background-color: var(--theme-secondary-light);
+}
+
+.repo-cards .card-body {
+  padding: 2.5rem 0 !important;
+}
+
+.repo-cards .btn-view {
+  background-color: var(--theme-primary-black) !important;
+  border-color: var(--theme-secondary-light);
+  color: var(--theme-secondary-light);
+}
+
+.repo-cards .btn-view:hover {
+  color: var(--theme-primary-bg-light);
+}
+
+/* Modal Styles */
+.modal-content {
+  height: 90vh;
+  background: var(--theme-primary-bg-dark);
+}
+
+.modal-header {
+  color: var(--theme-secondary-light) !important;
+  border-bottom: var(--bs-modal-header-border-width) solid var(--theme-primary-black);
+}
+
+.modal-header > .btn-close:hover {
+  background-color: var(--theme-secondary-light) !important;
+}
+
+.modal-body {
   height: 230px;
 }
-.modal-body img{
+
+.modal-body .card {
+  background-color: var(--theme-primary-bg-light);
+}
+
+.modal-body img {
   height: 100%;
-  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
-    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+  /* filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px); */
 }
-.repo-info{
-  color: #170f1e;
+
+#modal-result {
+  color: var(--theme-secondary-light);
 }
-.remove-button{
+
+.modal-footer {
+  border-top: var(--bs-modal-header-border-width) solid var(--theme-primary-black);
+}
+
+.modal-footer .btn {
+  background-color: var(--theme-primary-black);
+}
+
+.modal-footer .btn:hover {
+  background-color: var(--theme-secondary-light);
+  color: var(--theme-primary-black);
+}
+
+/* Modal Scrollbar */
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #1c1c1c #50da4c;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #50da4c;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.remove-button {
   cursor: pointer;
 }
-.nav-light{
+
+.nav-light {
   color: #fff;
 }
-.nav-dark{
+
+.nav-dark {
   color: #1f1c1c;
 }
 
-.card svg, .card p, .modal-header {
-  color: #212529 !important;
+footer {
+  max-height: 20vh;
 }
 
-.modal-content {
-  height: 90vh;
+/* Dark Mode Styles */
+.theme-toggler-container {
+  position: fixed;
+  bottom: 8vh;
+  right: 3vw;
+  z-index: 10 !important;
 }
 
-.btn-view {
-  background-color: #212529 !important;
-  border-color: white;
-  color: #fff;
+.theme-toggler-button {
+  border-radius: 50%;
+  min-width: 60px;
+  min-height: 60px;
+  border: none;
+  outline: none !important;
+  font-size: 1.5rem !important;
+  background-color: rgb(20, 18, 18);
+  color: white;
+}
+
+.theme-toggler-button:hover {
+  background-color: #4f4646;
+}
+
+.bg-light {
+  background-color: var(--theme-primary-bg-light) !important;
+}
+
+.bg-dark {
+  background-color: var(--theme-primary-bg-dark) !important;
+  /* background-image: url("../grain-dark.png"); */
+  color: var(--theme-secondary-beige);
+  /* background-size: auto;
+  background-repeat: repeat; */
+}
+
+.theme-primary-black {
+  background-color: var(--theme-primary-black) !important;
+}
+
+.theme-primary-black-link {
+  color: var(--theme-primary-black) !important;
+}
+
+.theme-primary-bg-dark-link {
+  color: var(--theme-dark-beige) !important;
+}
+
+.theme-dark-orange {
+  background-color: var(--theme-dark-orange) !important;
+}
+
+.theme-primary-bg-light {
+  background-color: #4f4646 !important;
+}
+
+.theme-primary-bg-light:hover {
+  background-color: #7a6f6f !important;
+}
+
+.theme-primary-bg-dark {
+  background-color: var(--theme-primary-bg-dark) !important;
+}
+
+.copyright-dark {
+  color: var(--theme-copyright) !important;
+}
+
+.copyright-light {
+  color: var(--theme-primary-black) !important;
+}
+
+@media screen and (max-height: 500px) {
+  .theme-toggler-container {
+    bottom: 0vh;
+  }
 }
 
