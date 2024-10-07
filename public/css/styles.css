@@ -1,20 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 
 :root {
-  --theme-primary-bg-light: #50da4c;
-  --theme-primary-bg-dark: #183717;
-  --theme-primary-black: #1c1c1c;
-
-  --theme-secondary-light: #fefdf8;
-  --theme-secondary-beige: #f3f0e0;
-
-  /* --theme-primary-bg-light: #677662;
-  --theme-primary-bg-dark: #183717;
-  --theme-primary-black: #212529;
-  --theme-copyright: #d2d1c4; */
-
-  /* --theme-dark-orange: #b53a26;
-  --theme-primary-bg-dark: #505c4c; */
+  --accent-color: #a600a0;
 }
 
 * {
@@ -27,10 +14,45 @@ html, body {
   max-height: 100vh;
   background-repeat: repeat-x;
   box-sizing: border-box;
+  background-color: var(--theme-primary-color);
+}
+
+body:not(.dark-mode) {
+  --theme-primary-color: #50da4c;
+  --theme-primary-text: #183717;
+  --theme-secondary-1: #fefdf8;
+  --theme-secondary-2: #f3f0e0;
+  --vertical-image: url(../svg/vertical_dark_green.svg);
+  --horizontal-image: url(../horizontal_dark_green.svg);
+  
+}
+
+.dark-mode {
+  --theme-primary-color: #183717;
+  --theme-primary-text: #fefdf8;
+  --theme-secondary-1: #1c1c1c;
+  --theme-secondary-2: #f3f0e0;
+  --vertical-image: url(../svg/vertical_beige.svg);
+  --horizontal-image: url(../horizontal_beige.svg);
+}
+
+.preloader {
+  background-color: var(--theme-primary-color);
+
+}
+
+.preloader img {
+  content: var(--vertical-image);
 }
 
 #banner {
   height: 80vh !important;
+  background-color: var(--theme-primary-color);
+  color: var(--theme-primary-text);
+}
+
+.nav-logo {
+  content: var(--vertical-image);
 }
 
 .custom-modal {
@@ -42,6 +64,7 @@ html, body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  content: var(--horizontal-image);
 }
 
 .repo-input {
@@ -95,7 +118,7 @@ html, body {
   display: none;
 }
 
-.theme-primary-bg-dark-link.custom-link:hover {
+.theme-primary-dark-link.custom-link:hover {
   opacity: 1;
   text-shadow: rgb(255 215 77 / 60%) -1px -1px 6px,
     rgb(124 127 255 / 60%) 1px 1px 6px;
@@ -112,11 +135,7 @@ html, body {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .repo-cards {
-    flex-direction: column;
-  }
-}
+
 
 @media screen and (min-width: 980px) {
   .hacktoberfest-logo {
@@ -168,43 +187,52 @@ html, body {
 
 .text-hactober img {
   height: 100%;
-  /* filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
-    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px); */
 }
 
 /* Card Styles */
 
 .repo-cards .card {
-  background-color: var(--theme-secondary-light);
+  background-color: var(--theme-secondary-1);
+  color: var(--theme-primary-text);
 }
 
 .repo-cards .card-body {
   padding: 2.5rem 0 !important;
 }
 
+.repo-cards .card-body > svg {
+  fill: var(--theme-primary-text);
+}
+
 .repo-cards .btn-view {
-  background-color: var(--theme-primary-black) !important;
-  border-color: var(--theme-secondary-light);
-  color: var(--theme-secondary-light);
+  background-color: var(--theme-primary-text) !important;
+  border-color: var(--theme-secondary-1);
+  color: var(--theme-secondary-1);
 }
 
 .repo-cards .btn-view:hover {
-  color: var(--theme-primary-bg-light);
+  color: var(--theme-primary-color);
+}
+
+@media screen and (max-width: 767px) {
+  .repo-cards {
+    flex-direction: column;
+  }
 }
 
 /* Modal Styles */
 .modal-content {
   height: 90vh;
-  background: var(--theme-primary-bg-dark);
+  background: var(--theme-primary-color);
 }
 
 .modal-header {
-  color: var(--theme-secondary-light) !important;
-  border-bottom: var(--bs-modal-header-border-width) solid var(--theme-primary-black);
+  color: var(--theme-secondary-1) !important;
+  border-bottom: var(--bs-modal-header-border-width) solid var(--theme-primary-text);
 }
 
 .modal-header > .btn-close:hover {
-  background-color: var(--theme-secondary-light) !important;
+  background-color: var(--theme-secondary-1) !important;
 }
 
 .modal-body {
@@ -212,30 +240,31 @@ html, body {
 }
 
 .modal-body .card {
-  background-color: var(--theme-primary-bg-light);
+  background-color: var(--theme-primary-color);
 }
 
 .modal-body img {
   height: 100%;
   /* filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
     drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px); */
+    content: var(--vertical-image);
 }
 
 #modal-result {
-  color: var(--theme-secondary-light);
+  color: var(--theme-primary-text);
 }
 
 .modal-footer {
-  border-top: var(--bs-modal-header-border-width) solid var(--theme-primary-black);
+  border-top: var(--bs-modal-header-border-width) solid var(--theme-primary-text);
 }
 
 .modal-footer .btn {
-  background-color: var(--theme-primary-black);
+  background-color: var(--theme-primary-text);
 }
 
 .modal-footer .btn:hover {
-  background-color: var(--theme-secondary-light);
-  color: var(--theme-primary-black);
+  background-color: var(--theme-secondary-1);
+  color: var(--theme-primary-text);
 }
 
 /* Modal Scrollbar */
@@ -300,52 +329,32 @@ footer {
   background-color: #4f4646;
 }
 
-.bg-light {
-  background-color: var(--theme-primary-bg-light) !important;
+.theme-primary-text {
+  background-color: var(--theme-primary-text) !important;
 }
 
-.bg-dark {
-  background-color: var(--theme-primary-bg-dark) !important;
-  /* background-image: url("../grain-dark.png"); */
-  color: var(--theme-secondary-beige);
-  /* background-size: auto;
-  background-repeat: repeat; */
+.theme-primary-text-link {
+  color: var(--theme-primary-text) !important;
 }
 
-.theme-primary-black {
-  background-color: var(--theme-primary-black) !important;
-}
-
-.theme-primary-black-link {
-  color: var(--theme-primary-black) !important;
-}
-
-.theme-primary-bg-dark-link {
+.theme-primary-dark-link {
   color: var(--theme-dark-beige) !important;
 }
 
-.theme-dark-orange {
-  background-color: var(--theme-dark-orange) !important;
-}
-
-.theme-primary-bg-light {
+.base-color {
   background-color: #4f4646 !important;
 }
 
-.theme-primary-bg-light:hover {
+.base-color:hover {
   background-color: #7a6f6f !important;
 }
 
-.theme-primary-bg-dark {
-  background-color: var(--theme-primary-bg-dark) !important;
-}
-
-.copyright-dark {
-  color: var(--theme-copyright) !important;
+.theme-primary-color {
+  background-color: var(--theme-primary-color) !important;
 }
 
 .copyright-light {
-  color: var(--theme-primary-black) !important;
+  color: var(--theme-primary-text) !important;
 }
 
 @media screen and (max-height: 500px) {
@@ -353,4 +362,3 @@ footer {
     bottom: 0vh;
   }
 }
-

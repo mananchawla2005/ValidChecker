@@ -56,17 +56,15 @@
     />
   </head>
 
-  <body class="bg-light">
+  <body onload="onload()">
     <!-- Preloader -->
-    <div
-      class="
+    <div class="
         preloader
         position-fixed
         top-0
         end-0
         start-0
         bottom-0
-        bg-light
         d-flex
         align-items-center
         justify-content-center
@@ -166,7 +164,7 @@
       </form>
 
       <div class="theme-toggler-container">
-        <button class="theme-toggler-button  shadow-lg">
+        <button class="theme-toggler-button shadow-lg" onclick="darkmode()">
           <i class="bi bi-moon-fill theme-toggler-icon"></i>
         </button>
       </div>
@@ -188,5 +186,5 @@
   <script src="/js/api.js"></script>
   <script src="/js/list-items.js" defer></script>
   <script src="/js/input.js" defer></script>
-  <script src="/js/main.js" type="text/javascript" defer></script>
+  <script src="/js/main.js" type="text/javascript"></script>
 </html>
