@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap");
 :root {
-  --theme-bg-light: #f4f0e1;
-  --theme-purple: #350048;
+  --theme-primary-bg-light: #50da4c;
+  --theme-dark-green: #183717;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,7 @@ img {
   margin: 5%;
 }
 .main-container {
-  background-color: var(--theme-bg-light);
+  background-color: var(--theme-primary-bg-light);
   height: 100%;
 }
 .content-wrapper {
@@ -49,7 +50,7 @@ img {
 .hero-text {
   font-size: 2rem;
   text-transform: uppercase;
-  color: var(--theme-purple);
+  color: var(--theme-dark-green);
   font-weight: bold;
 }
 

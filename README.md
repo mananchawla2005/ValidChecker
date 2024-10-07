@@ -15,7 +15,7 @@
 
 ---
 
-<p align="center"><img src="./img/light.png"></img></p>
+<p align="center"><img src="./img/screenshot-light-mode.png"></img></p>
 
 <details>
   <summary>Dark Mode</summary>
