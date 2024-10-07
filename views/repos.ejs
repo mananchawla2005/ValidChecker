@@ -46,7 +46,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 </head>
 
-<body class="bg-light" style="overflow: auto; min-height: 100%;">
+<body onload="onload()">
     <!-- Preloader -->
     <div class="
         preloader
@@ -55,7 +55,6 @@
         end-0
         start-0
         bottom-0
-        bg-light
         d-flex
         align-items-center
         justify-content-center
@@ -74,7 +73,7 @@
                     <div class="col-md-6 col-sm-12 p-3">
                         <div class="card text-center" style="height: 300px;">
                             <div class="card-body">
-                                <!-- <h3 class="card-title">GITHUB</h3> -->
+                                <h3 class="card-title">GITHUB</h3>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="170" height="170" fill="#1c1c1c"
                                     class="bi bi-github" viewBox="0 0 16 16">
                                     <path
@@ -90,7 +89,7 @@
                     <div class="col-md-6 col-sm-12 p-3">
                         <div class="card text-center" style="height: 300px;">
                             <div class="card-body">
-                                <!-- <h3 class="card-title" >GITLAB</h3> -->
+                                <h3 class="card-title" >GITLAB</h3>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="170" height="170" fill="#1c1c1c"
                                     class="bi bi-gitlab" viewBox="0 0 16 16">
                                     <path
@@ -194,7 +193,7 @@
             </div>
 
             <div class="theme-toggler-container">
-                <button class="theme-toggler-button theme-primary-black shadow-lg">
+                <button onclick="darkmode()" class="theme-toggler-button theme-primary-text shadow-lg">
                     <i class="bi bi-moon-fill theme-toggler-icon"></i>
                 </button>
             </div>

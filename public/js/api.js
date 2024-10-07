@@ -72,7 +72,7 @@ const modalDetails = (data) => {
   if (data.status == 200 && data.valid) {
     if(data.isEligible){
       result.innerHTML = `${eligibleOrNot(data)} ${openOrNot(data)}`;
-      result.style.color = "var(--theme-primary-bg-light)";
+      result.style.color = "var(--theme-primary-text)";
     } else {
       result.innerHTML = `${eligibleOrNot(data)} ${openOrNot(data)}`;
       result.style.color = "#ff0000";
